@@ -91,8 +91,13 @@ module Gmaps4rails
       # - name: :markers
       # - hash: { :data => json, :options => hash }
       
-      delegate :options, :data, :to => :@element_info
-      
+      def options
+        @element_info.options
+      end
+
+      def data
+        @element_info.data
+      end
       def initialize(gmap_id, name, hash)
         @gmap_id, @name, @js = gmap_id, name, Array.new
         @element_info = OpenStruct.new(hash)
